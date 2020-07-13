@@ -12,7 +12,7 @@ const initialTodos = [
 //create your first component
 export function Home() {
 	const [todos, saveTodos] = React.useState(initialTodos);
-
+	const [currentTitle, saveCurrentTitle] = React.useState("");
 	// create adding item button's function:
 	function createTodo(todoName) {
 		saveTodos(todos.concat({ title: todoName }));
@@ -23,7 +23,11 @@ export function Home() {
 			{todos.map(t => (
 				<li key={t.title}>{t.title}</li>
 			))}
-			<button onClick={() => createTodo("new item dawg")}>
+			<input
+				type="text"
+				onChange={e => saveCurrentTitle(e.target.value)}
+			/>
+			<button onClick={() => createTodo(currentTitle)}>
 				add new todo
 			</button>
 		</div>
