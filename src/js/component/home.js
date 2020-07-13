@@ -27,7 +27,7 @@ export function Home() {
 			<button
 				onClick={() => {
 					saveTodos(todos.concat({ title: currentTitle }));
-					saveCurrentTitle(""); // this is a controlled input (part b)
+					saveCurrentTitle(""); // this is a controlled input (part b), without part a and b, the box retains the prior input and isnt user friendly
 				}}>
 				add new todo
 			</button>
