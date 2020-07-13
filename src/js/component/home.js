@@ -1,7 +1,6 @@
 import React from "react";
 
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
 const initialTodos = [
 	{ title: "Make the Bed" },
@@ -13,10 +12,7 @@ const initialTodos = [
 export function Home() {
 	const [todos, saveTodos] = React.useState(initialTodos);
 	const [currentTitle, saveCurrentTitle] = React.useState("");
-	// create adding item button's function:
-	function createTodo(todoName) {
-		saveTodos(todos.concat({ title: todoName }));
-	}
+	//
 
 	return (
 		<div className="text-center mt-5">
@@ -26,8 +22,13 @@ export function Home() {
 			<input
 				type="text"
 				onChange={e => saveCurrentTitle(e.target.value)}
+				value={currentTitle} // this is a controlled input (part a), resetting input box back to blank
 			/>
-			<button onClick={() => createTodo(currentTitle)}>
+			<button
+				onClick={() => {
+					saveTodos(todos.concat({ title: currentTitle }));
+					saveCurrentTitle(""); // this is a controlled input (part b)
+				}}>
 				add new todo
 			</button>
 		</div>
